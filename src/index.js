@@ -46,7 +46,7 @@ app.post("/users", (request, response) => {
   const { name, username } = request.body;
 
   const userNameAlreadyExists = users.some(
-    ({ userName }) => userName === userName
+    (user) => user.username === username
   );
 
   if (userNameAlreadyExists) {
@@ -126,7 +126,7 @@ app.delete(
 
     userAccount.todos.splice(todo, 1);
 
-    return response.status(204).send();
+    return response.status(204).json();
   }
 );
 
